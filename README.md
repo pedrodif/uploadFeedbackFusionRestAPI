@@ -51,7 +51,7 @@ Este projeto é uma API REST desenvolvida em Java com Spring Boot. Este README f
 3. Extraia o conteúdo do arquivo para uma pasta de sua escolha.
 4. Adicione a pasta `bin` do Maven à sua variável de ambiente `PATH`.
 
-**Criar variável de ambiente MAVEN_HOME:**
+**Criar variável de ambiente M2_HOME:**
 
 - Abra o Painel de Controle.
 - Vá em Sistema > Configurações avançadas do sistema > Variáveis de Ambiente.
