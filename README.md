@@ -79,6 +79,8 @@ Siga as instruções do site oficial para a instalação do Docker Compose: [Ins
 
 ### Executando o Projeto
 
+**Importante:** Lembre-se de inicializar o Docker Desktop antes de executar qualquer comando relacionado ao Docker.
+
 Para criar e iniciar os containers Docker, navegue até o diretório onde está localizado o arquivo `database-docker` e execute o seguinte comando:
 
 ```bash
@@ -151,7 +153,7 @@ ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY (id);
 
 Com esses passos, você terá configurado a conexão e criado a tabela com sucesso no DBeaver.
 
-### Testando a API com Postman
+## Testando a API com Postman
 
 1. Abra o Postman.
 2. Configure as requisições para interagir com sua API.
