@@ -18,10 +18,6 @@ Este projeto é uma API REST desenvolvida em Java com Spring Boot. Este README f
 5. [Executando o Projeto](#executando-o-projeto)
 6. [Testando a API com Postman](#testando-a-api-com-postman)
 
-## Pré-requisitos
-
-- Sistema operacional: Windows.
-
 ## Instalação
 
 ### Download e Instalação do JDK 17
