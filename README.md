@@ -107,7 +107,7 @@ Para configurar corretamente sua conexão no DBeaver, certifique-se de que o nom
      - **Host**: `0.0.0.0` (caso o banco esteja configurado para aceitar conexões dessa interface).
      - **Porta**: `5432` (ou outra porta configurada para o PostgreSQL).
      - **Database**: **`feedbackfusion_database`** (é fundamental que este seja o nome exato do banco).
-     - **Usuário**: o nome de usuário do banco de dados.
+     - **Usuário**: postgres.
      - **Senha**: `123`.
    - Clique em **Testar Conexão** para garantir que a conexão está correta.
 
