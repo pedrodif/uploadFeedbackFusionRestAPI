@@ -77,9 +77,10 @@ docker login -u <seu-usuario> -p <sua-senha>
 
 Siga as instruções do site oficial para a instalação do Docker Compose: [Instalação do Docker Compose](https://docs.docker.com/compose/install/standalone/).
 
-## Executando o Projeto
+## Criando o container 
 
 **Importante:** Lembre-se de inicializar o Docker Desktop antes de executar qualquer comando relacionado ao Docker.
+**Importante:** Este passo deve ser concluído antes de realizar a configuração no Banco de Dados.
 
 Para criar e iniciar os containers Docker, navegue até o diretório onde está localizado o arquivo `database-docker` e execute o seguinte comando:
 
