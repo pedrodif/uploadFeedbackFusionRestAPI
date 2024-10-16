@@ -4,19 +4,18 @@ Este projeto é uma API REST desenvolvida em Java com Spring Boot. Este README f
 
 ## Índice
 
-1. [Pré-requisitos](#pré-requisitos)
-2. [Instalação](#instalação)
-    - [Download e Instalação do JDK 17](#download-e-instalação-do-jdk-17)
-    - [Instalação do DBeaver](#instalação-do-dbeaver)
-    - [Instalação do Maven](#instalação-do-maven)
-    - [Instalação do Docker](#instalação-do-docker)
-    - [Instalação do Docker Compose](#instalação-do-docker-compose)
-3. [Configuração do Projeto](#configuração-do-projeto)
-    - [Variáveis de Ambiente](#variáveis-de-ambiente)
-4. [Banco de Dados](#banco-de-dados)
-    - [Criação da Tabela `usuario`](#criação-da-tabela-usuario)
-5. [Executando o Projeto](#executando-o-projeto)
-6. [Testando a API com Postman](#testando-a-api-com-postman)
+1. [Instalação](#instalação)
+   - [Download e Instalação do JDK 17](#download-e-instalação-do-jdk-17)
+   - [Instalação do DBeaver](#instalação-do-dbeaver)
+   - [Instalação do Maven](#instalação-do-maven)
+   - [Instalação do Docker](#instalação-do-docker)
+   - [Instalação do Docker Compose](#instalação-do-docker-compose)
+2. [Configuração do Projeto](#configuração-do-projeto)
+   - [Variáveis de Ambiente](#variáveis-de-ambiente)
+3. [Banco de Dados](#banco-de-dados)
+   - [Criação da Tabela `usuario`](#criação-da-tabela-usuario)
+4. [Executando o Projeto](#executando-o-projeto)
+5. [Testando a API com Postman](#testando-a-api-com-postman)
 
 ## Instalação
 
