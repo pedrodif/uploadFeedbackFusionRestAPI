@@ -10,12 +10,12 @@ Este projeto é uma API REST desenvolvida em Java com Spring Boot. Este README f
    - [Instalação do Maven](#instalação-do-maven)
    - [Instalação do Docker](#instalação-do-docker)
    - [Instalação do Docker Compose](#instalação-do-docker-compose)
-2. [Configuração do Projeto](#configuração-do-projeto)
-   - [Variáveis de Ambiente](#variáveis-de-ambiente)
+2. [Criando o Container](#criando-o-container)
 3. [Banco de Dados](#banco-de-dados)
    - [Criação da Tabela `usuario`](#criação-da-tabela-usuario)
 4. [Executando o Projeto](#executando-o-projeto)
 5. [Testando a API com Postman](#testando-a-api-com-postman)
+
 
 ## Instalação
 
