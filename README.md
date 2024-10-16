@@ -73,11 +73,11 @@ docker login -u <seu-usuario> -p <sua-senha>
 
 ```
 
-## Instalação do Docker Compose
+### Instalação do Docker Compose
 
 Siga as instruções do site oficial para a instalação do Docker Compose: [Instalação do Docker Compose](https://docs.docker.com/compose/install/standalone/).
 
-### Executando o Projeto
+## Executando o Projeto
 
 **Importante:** Lembre-se de inicializar o Docker Desktop antes de executar qualquer comando relacionado ao Docker.
 
@@ -152,6 +152,11 @@ ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY (id);
      - Expanda a tabela **usuario** para visualizar suas colunas e confirmar que foi criada conforme o script.
 
 Com esses passos, você terá configurado a conexão e criado a tabela com sucesso no DBeaver.
+
+## Executando o projeto
+
+Para executar o projeto **FeedbackFusionRestApiApplication**, inicie a aplicação a partir do método `main`. Isso irá inicializar o servidor e tornar sua API disponível para interações.
+
 
 ## Testando a API com Postman
 
