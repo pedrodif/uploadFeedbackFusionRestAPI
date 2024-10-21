@@ -135,6 +135,24 @@ CREATE TABLE usuario (
 ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY (id);
 
 ```
+### Criação da Tabela `feedback`
+
+```sql
+CREATE TABLE feedback (
+    id BIGSERIAL NOT NULL,
+    gestor_id BIGINT NOT NULL,
+    colaborador_id BIGINT NOT NULL,
+    titulo VARCHAR(150) NOT NULL,
+    descricao TEXT NOT NULL,
+    data_criacao DATE NOT NULL,
+    data_edicao DATE NULL
+);
+
+ALTER TABLE feedback ADD CONSTRAINT feedback_pk PRIMARY KEY (id);
+ALTER TABLE feedback ADD CONSTRAINT fk_gestor FOREIGN KEY (gestor_id) REFERENCES usuario(id);
+ALTER TABLE feedback ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) REFERENCES usuario(id);
+
+```
 - Executar o Script:
 
 1. **Executar o Script SQL**:
@@ -146,6 +164,7 @@ ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY (id);
      - No painel esquerdo, expanda o banco de dados onde você criou a tabela, clique com o botão direito e selecione **Atualizar** para ver a nova tabela listada.
    - **Visualizar Estrutura da Tabela**:
      - Expanda a tabela **usuario** para visualizar suas colunas e confirmar que foi criada conforme o script.
+     - Expanda a tabela **feedback** para visualizar suas colunas e confirmar que foi criada conforme o script.
 
 Com esses passos, você terá configurado a conexão e criado a tabela com sucesso no DBeaver.
 
