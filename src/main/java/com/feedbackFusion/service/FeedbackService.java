@@ -16,7 +16,6 @@ public class FeedbackService {
     private FeedbackRepository repository;
 
     private void configurarFeedback(Feedback feedback, FeedbackDTO feedbackDTO){
-        feedback.setDataCriacao(feedbackDTO.getDataCriacao());
         feedback.setDataEdicao(feedbackDTO.getDataEdicao());
         feedback.setTitulo(feedbackDTO.getTitulo());
         feedback.setDescricao(feedbackDTO.getDescricao());
@@ -24,12 +23,14 @@ public class FeedbackService {
         feedback.setColaboradorId(feedbackDTO.getColaboradorId());
     }
 
-    public FeedbackDTO create(FeedbackDTO FeedbackDTO){
+    public FeedbackDTO create(FeedbackDTO feedbackDTO){
         Feedback feedback = new Feedback();
-        configurarFeedback(feedback, FeedbackDTO);
+        configurarFeedback(feedback, feedbackDTO);
+        feedback.setDataCriacao(feedbackDTO.getDataCriacao());
         repository.save(feedback);
-        FeedbackDTO.setId(feedback.getId());
-        return FeedbackDTO;
+
+        feedbackDTO.setId(feedback.getId());
+        return feedbackDTO;
     }
 
     public FeedbackDTO update(Long feedbackId, FeedbackDTO feedbackDTO){
@@ -37,8 +38,12 @@ public class FeedbackService {
                 .orElseThrow(() -> new EntityNotFoundException("Nenhum feedback encontrado com o ID: " + feedbackId));
 
         configurarFeedback(feedback, feedbackDTO);
+        feedback.setDataCriacao(feedback.getDataCriacao());
         repository.save(feedback);
+
         feedbackDTO.setId(feedback.getId());
+        feedbackDTO.setDataCriacao(feedback.getDataCriacao());
+
         return feedbackDTO;
     }
 

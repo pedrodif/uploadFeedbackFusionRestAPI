@@ -1,10 +1,14 @@
 package com.feedbackFusion.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
 
 public class FeedbackDTO {
     private String titulo, descricao;
     private Long id, gestorId, colaboradorId;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataCriacao, dataEdicao;
 
     public Long getId() {

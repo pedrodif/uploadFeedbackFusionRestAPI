@@ -1,5 +1,6 @@
 package com.feedbackFusion.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -10,8 +11,11 @@ public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")
+    private Long id;
     private String titulo, descricao;
-    private Long id, gestorId, colaboradorId;
+    private Long gestorId, colaboradorId;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataCriacao, dataEdicao;
 
     public Long getId() {
