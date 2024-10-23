@@ -129,7 +129,8 @@ CREATE TABLE usuario (
     nome VARCHAR(100) NOT NULL,
     empresa VARCHAR(100) NOT NULL,
     departamento VARCHAR(50) NOT NULL,
-    cargo VARCHAR(50) NOT NULL
+    cargo VARCHAR(50) NOT NULL,
+   avatar VARCHAR(100) NULL
 );
 
 ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY (id);
