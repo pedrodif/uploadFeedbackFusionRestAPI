@@ -24,6 +24,7 @@ public class UsuarioService {
         usuario.setDepartamento(usuarioDTO.getDepartamento());
         usuario.setStatusMonitor(usuarioDTO.isStatusMonitor());
         usuario.setPontuacaoTotal(usuarioDTO.getPontuacaoTotal());
+        usuario.setAvatar(usuarioDTO.getAvatar());
     }
 
     public UsuarioDTO create(UsuarioDTO UsuarioDTO){
@@ -55,6 +56,7 @@ public class UsuarioService {
         usuarioConvertido.setDepartamento(usuario.getDepartamento());
         usuarioConvertido.setCargo(usuario.getCargo());
         usuarioConvertido.setPontuacaoTotal(usuario.getPontuacaoTotal());
+        usuarioConvertido.setAvatar(usuario.getAvatar());
         return usuarioConvertido;
     }
 

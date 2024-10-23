@@ -4,7 +4,7 @@ public class UsuarioDTO {
     private Long id;
     private int pontuacaoTotal = 0;
     private boolean statusMonitor = false;
-    private String email, senha, nome, empresa, departamento, cargo;
+    private String email, senha, nome, empresa, departamento, cargo, avatar;
 
     public Long getId() {
         return this.id;
@@ -76,5 +76,13 @@ public class UsuarioDTO {
 
     public void setPontuacaoTotal(int pontuacaoTotal) {
         this.pontuacaoTotal = pontuacaoTotal;
+    }
+
+    public String getAvatar() {
+        return this.avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

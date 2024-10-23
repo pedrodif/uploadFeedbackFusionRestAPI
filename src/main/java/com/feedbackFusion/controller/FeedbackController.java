@@ -38,7 +38,7 @@ public class FeedbackController {
         return feedbackService.getById(feedbackId);
     }
 
-    @GetMapping("colaborador/{colaboradorId}")
+    @GetMapping("/colaborador/{colaboradorId}")
     @ResponseBody
     public List<FeedbackDTO> getByColaboradorId(@PathVariable("colaboradorId") Long colaboradorId){
         return feedbackService.getByColaboradorId(colaboradorId);

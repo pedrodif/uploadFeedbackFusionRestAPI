@@ -11,7 +11,7 @@ public class Usuario {
     private Long id;
     private int pontuacaoTotal = 0;
     private boolean statusMonitor = false;
-    private String email, senha, nome, empresa, departamento, cargo;
+    private String email, senha, nome, empresa, departamento, cargo, avatar;
 
     public Long getId() {
         return this.id;
@@ -83,5 +83,13 @@ public class Usuario {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
+    }
+
+    public String getAvatar() {
+        return this.avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
