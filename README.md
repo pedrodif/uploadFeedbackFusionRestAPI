@@ -129,7 +129,8 @@ CREATE TABLE usuario (
     nome VARCHAR(100) NOT NULL,
     empresa VARCHAR(100) NOT NULL,
     departamento VARCHAR(50) NOT NULL,
-    cargo VARCHAR(50) NOT NULL
+    cargo VARCHAR(50) NOT NULL,
+   avatar VARCHAR(100) NULL
 );
 
 ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY (id);
@@ -194,7 +195,8 @@ Para executar o projeto **FeedbackFusionRestApiApplication**, inicie a aplica√ß√
     "nome": "Leticia Branca de Barros Motta",
     "empresa": "Exemplo Ltda",
     "departamento": "Desenvolvimento",
-    "cargo": "Desenvolvedora"
+    "cargo": "Desenvolvedora",
+   "avatar": "https://api.dicebear.com/9.x/bottts/svg?seed=leticia"
 }
 
 ```
@@ -223,7 +225,8 @@ Para executar o projeto **FeedbackFusionRestApiApplication**, inicie a aplica√ß√
     "nome": "Leticia Branca de Barros Motta",
     "empresa": "Exemplo Ltda",
     "departamento": "Desenvolvimento",
-    "cargo": "Desenvolvedora"
+    "cargo": "Desenvolvedora",
+    "avatar": "https://api.dicebear.com/9.x/bottts/svg?seed=leticia"
 }
 ```
 
