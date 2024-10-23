@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/usuarios", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UsuarioController {
     @Autowired
