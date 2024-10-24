@@ -21,7 +21,7 @@ public class FeedbackController {
     @PostMapping
     public ResponseEntity<FeedbackDTO> create(@RequestBody FeedbackDTO feedbackDTO){
         FeedbackDTO createdFeedback = feedbackService.create(feedbackDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).header(HttpHeaders.CONTENT_TYPE, "application/json").body(createdFeedback);
+        return ResponseEntity.ok(createdFeedback);
     }
 
     @PutMapping("/{feedbackId}")
