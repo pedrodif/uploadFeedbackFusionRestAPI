@@ -176,8 +176,8 @@ CREATE TABLE tarefa (
 );
 
 ALTER TABLE tarefa ADD CONSTRAINT tarefa_pk PRIMARY KEY (id);
-ALTER TABLE feedback ADD CONSTRAINT fk_gestor FOREIGN KEY (gestor_id) REFERENCES usuario(id);
-ALTER TABLE feedback ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) REFERENCES usuario(id);
+ALTER TABLE tarefa ADD CONSTRAINT fk_gestor FOREIGN KEY (gestor_id) REFERENCES usuario(id);
+ALTER TABLE tarefa ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) REFERENCES usuario(id);
 
 ```
 
