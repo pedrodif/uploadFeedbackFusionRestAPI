@@ -157,6 +157,8 @@ ALTER TABLE feedback ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) 
 
 ### Criação da Tabela `tarefa`
 
+```sql
+
 CREATE TABLE tarefa (
     id BIGSERIAL NOT NULL,
     pontuacao INT DEFAULT 0 NOT NULL,
@@ -175,7 +177,7 @@ CREATE TABLE tarefa (
 
 ALTER TABLE tarefa ADD CONSTRAINT tarefa_pk PRIMARY KEY (id);
 
-
+```
 
 - Executar o Script:
 
