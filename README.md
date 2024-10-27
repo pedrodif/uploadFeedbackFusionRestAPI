@@ -154,6 +154,33 @@ ALTER TABLE feedback ADD CONSTRAINT fk_gestor FOREIGN KEY (gestor_id) REFERENCES
 ALTER TABLE feedback ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) REFERENCES usuario(id);
 
 ```
+
+### Criação da Tabela `tarefa`
+
+```sql
+
+CREATE TABLE tarefa (
+    id BIGSERIAL NOT NULL,
+    pontuacao INT DEFAULT 0 NOT NULL,
+    gestor_id BIGINT NOT NULL,
+    colaborador_id BIGINT NOT NULL,
+    status_conclusao BOOLEAN DEFAULT FALSE NOT NULL,
+    documentos VARCHAR(255) NULL,
+    comentarios_gestor TEXT NULL,
+    titulo VARCHAR(100) NOT NULL,
+    descricao TEXT NULL,
+    data_criacao DATE NOT NULL,
+    data_prazo DATE NOT NULL,
+    data_edicao DATE NULL,
+    data_conclusao DATE NULL
+);
+
+ALTER TABLE tarefa ADD CONSTRAINT tarefa_pk PRIMARY KEY (id);
+ALTER TABLE tarefa ADD CONSTRAINT fk_gestor FOREIGN KEY (gestor_id) REFERENCES usuario(id);
+ALTER TABLE tarefa ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) REFERENCES usuario(id);
+
+```
+
 - Executar o Script:
 
 1. **Executar o Script SQL**:
