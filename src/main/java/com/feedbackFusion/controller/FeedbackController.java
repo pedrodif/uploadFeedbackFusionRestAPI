@@ -1,7 +1,5 @@
 package com.feedbackFusion.controller;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import com.feedbackFusion.dto.FeedbackDTO;
 import com.feedbackFusion.service.FeedbackService;
@@ -31,8 +29,9 @@ public class FeedbackController {
     }
 
     @GetMapping
-    public List<FeedbackDTO> getAll(){
-        return feedbackService.getAll();
+    public ResponseEntity<List<FeedbackDTO>> getAll(){
+        List<FeedbackDTO> feedbacks = feedbackService.getAll();
+        return ResponseEntity.ok(feedbacks);
     }
 
     @GetMapping("/{feedbackId}")
@@ -54,7 +53,8 @@ public class FeedbackController {
     }
 
     @DeleteMapping("/{feedbackId}")
-    public String delete(@PathVariable("feedbackId") Long feedbackId){
-        return feedbackService.delete(feedbackId);
+    public ResponseEntity<String> delete(@PathVariable("feedbackId") Long feedbackId){
+        String feedbackDeletado =  feedbackService.delete(feedbackId);
+        return ResponseEntity.ok(feedbackDeletado);
     }
 }

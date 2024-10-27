@@ -3,6 +3,7 @@ package com.feedbackFusion.controller;
 import com.feedbackFusion.dto.UsuarioDTO;
 import com.feedbackFusion.service.UsuarioService;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,32 +17,32 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @PostMapping
-    @ResponseBody
-    public UsuarioDTO create(@RequestBody UsuarioDTO usuarioDTO){
-        return usuarioService.create(usuarioDTO);
+    public ResponseEntity<UsuarioDTO> create(@RequestBody UsuarioDTO usuarioDTO) {
+        UsuarioDTO createdUsuario = usuarioService.create(usuarioDTO);
+        return ResponseEntity.ok(createdUsuario);
     }
 
     @PutMapping("/{usuarioId}")
-    @ResponseBody
-    public UsuarioDTO update(@PathVariable("usuarioId") Long usuarioId, @RequestBody UsuarioDTO usuarioDTO){
-        return usuarioService.update(usuarioId, usuarioDTO);
+    public ResponseEntity<UsuarioDTO> update(@PathVariable("usuarioId") Long usuarioId, @RequestBody UsuarioDTO usuarioDTO) {
+        UsuarioDTO updatedUsuario = usuarioService.update(usuarioId, usuarioDTO);
+        return ResponseEntity.ok(updatedUsuario);
     }
 
     @GetMapping
-    @ResponseBody
-    public List<UsuarioDTO> getAll(){
-        return usuarioService.getAll();
+    public ResponseEntity<List<UsuarioDTO>> getAll() {
+        List<UsuarioDTO> usuarios = usuarioService.getAll();
+        return ResponseEntity.ok(usuarios);
     }
 
-   @GetMapping("/{usuarioId}")
-     @ResponseBody
-     public UsuarioDTO getById(@PathVariable("usuarioId") Long usuarioId){
-     return usuarioService.getById(usuarioId);
+    @GetMapping("/{usuarioId}")
+    public ResponseEntity<UsuarioDTO> getById(@PathVariable("usuarioId") Long usuarioId) {
+        UsuarioDTO usuario = usuarioService.getById(usuarioId);
+        return ResponseEntity.ok(usuario);
     }
 
     @DeleteMapping("/{usuarioId}")
-    @ResponseBody
-    public String delete(@PathVariable("usuarioId") Long usuarioId){
-        return usuarioService.delete(usuarioId);
+    public ResponseEntity<String> delete(@PathVariable("usuarioId") Long usuarioId) {
+        String usuarioDeletado = usuarioService.delete(usuarioId);
+        return ResponseEntity.ok(usuarioDeletado);
     }
 }
