@@ -183,6 +183,26 @@ ALTER TABLE tarefa ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) RE
 
 ```
 
+### Criação da Tabela `conquista` 
+
+```sql
+
+CREATE TABLE conquista (
+    id BIGSERIAL NOT NULL,
+    nome VARCHAR(150) NOT NULL,
+    descricao TEXT NOT NULL,
+    tipo VARCHAR(100) NOT NULL,
+    gestor_id BIGINT NOT NULL,
+    colaborador_id BIGINT NOT NULL,
+    data_atribuicao DATE NOT NULL
+);
+
+ALTER TABLE conquista ADD CONSTRAINT conquista_pk PRIMARY KEY (id);
+ALTER TABLE conquista ADD CONSTRAINT fk_gestor FOREIGN KEY (gestor_id) REFERENCES usuario(id);
+ALTER TABLE conquista ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) REFERENCES usuario(id);
+
+```
+
 - Executar o Script:
 
 1. **Executar o Script SQL**:
