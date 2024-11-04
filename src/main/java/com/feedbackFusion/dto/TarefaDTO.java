@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDate;
 
 public class TarefaDTO {
-    private int pontuacao = 0;
     private boolean statusConclusao = false;
     private Long id, gestorId, colaboradorId;
+    private int pontuacao = 0, pontuacaoObtida = 0;
     private String documentos, comentariosGestor, titulo, descricao;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -67,6 +67,14 @@ public class TarefaDTO {
 
     public void setPontuacao(int pontuacao) {
         this.pontuacao = pontuacao;
+    }
+
+    public int getPontuacaoObtida() {
+        return this.pontuacaoObtida;
+    }
+
+    public void setPontuacaoObtida(int pontuacaoObtida) {
+        this.pontuacaoObtida = pontuacaoObtida;
     }
 
     public String getTitulo() {

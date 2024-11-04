@@ -15,6 +15,9 @@ public class TarefaService {
     @Autowired
     private TarefaRepository repository;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     private void configurarTarefa(Tarefa tarefa, TarefaDTO tarefaDTO) {
         tarefa.setTitulo(tarefaDTO.getTitulo());
         tarefa.setDescricao(tarefaDTO.getDescricao());
@@ -22,6 +25,7 @@ public class TarefaService {
         tarefa.setDataConclusao(tarefaDTO.getDataConclusao());
         tarefa.setDataEdicao(tarefaDTO.getDataEdicao());
         tarefa.setPontuacao(tarefaDTO.getPontuacao());
+        tarefa.setPontuacaoObtida(tarefaDTO.getPontuacaoObtida());
         tarefa.setDocumentos(tarefaDTO.getDocumentos());
         tarefa.setComentariosGestor(tarefaDTO.getComentariosGestor());
         tarefa.setGestorId(tarefaDTO.getGestorId());
@@ -50,6 +54,7 @@ public class TarefaService {
         tarefaDTO.setId(tarefa.getId());
         tarefaDTO.setDataCriacao(tarefa.getDataCriacao());
 
+        usuarioService.updatePontuacao(tarefaDTO.getId(), tarefaDTO.getPontuacaoObtida());
         return tarefaDTO;
     }
 
@@ -63,6 +68,7 @@ public class TarefaService {
         tarefaConvertida.setDataConclusao(tarefa.getDataConclusao());
         tarefaConvertida.setDataEdicao(tarefa.getDataEdicao());
         tarefaConvertida.setPontuacao(tarefa.getPontuacao());
+        tarefaConvertida.setPontuacaoObtida(tarefa.getPontuacaoObtida());
         tarefaConvertida.setDocumentos(tarefa.getDocumentos());
         tarefaConvertida.setStatusConclusao(tarefa.isStatusConclusao());
         tarefaConvertida.setComentariosGestor(tarefa.getComentariosGestor());

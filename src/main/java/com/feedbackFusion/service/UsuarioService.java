@@ -35,6 +35,14 @@ public class UsuarioService {
         return UsuarioDTO;
     }
 
+    public void updatePontuacao(Long usuarioId, int pontuacao) {
+        Usuario usuario = repository.findById(usuarioId)
+                .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + usuarioId));
+
+        usuario.setPontuacaoTotal(usuario.getPontuacaoTotal() + pontuacao);
+        repository.save(usuario);
+    }
+
     public UsuarioDTO update(Long usuarioId, UsuarioDTO usuarioDTO) {
         Usuario usuario = repository.findById(usuarioId)
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + usuarioId));

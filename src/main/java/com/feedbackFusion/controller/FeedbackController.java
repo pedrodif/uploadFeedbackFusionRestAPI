@@ -6,7 +6,9 @@ import com.feedbackFusion.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -19,7 +21,10 @@ public class FeedbackController {
     @PostMapping
     public ResponseEntity<FeedbackDTO> create(@RequestBody FeedbackDTO feedbackDTO){
         FeedbackDTO createdFeedback = feedbackService.create(feedbackDTO);
-        return ResponseEntity.ok(createdFeedback);
+
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(createdFeedback.getId()).toUri();
+        return ResponseEntity.created(uri).body(createdFeedback);
     }
 
     @PutMapping("/{feedbackId}")

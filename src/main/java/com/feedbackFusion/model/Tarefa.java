@@ -12,9 +12,9 @@ public class Tarefa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")
     private Long id;
-    private int pontuacao = 0;
     private Long gestorId, colaboradorId;
     private boolean statusConclusao = false;
+    private int pontuacao = 0, pontuacaoObtida = 0;
     private String documentos, comentariosGestor, titulo, descricao;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -74,6 +74,14 @@ public class Tarefa {
 
     public void setPontuacao(int pontuacao) {
         this.pontuacao = pontuacao;
+    }
+
+    public int getPontuacaoObtida() {
+        return this.pontuacaoObtida;
+    }
+
+    public void setPontuacaoObtida(int pontuacaoObtida) {
+        this.pontuacaoObtida = pontuacaoObtida;
     }
 
     public String getTitulo() {
