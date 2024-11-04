@@ -180,6 +180,18 @@ ALTER TABLE tarefa ADD CONSTRAINT tarefa_pk PRIMARY KEY (id);
 ALTER TABLE tarefa ADD CONSTRAINT fk_gestor FOREIGN KEY (gestor_id) REFERENCES usuario(id);
 ALTER TABLE tarefa ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) REFERENCES usuario(id);
 
+```
+### Criação da Tabela `selo` 
+
+```sql
+CREATE TABLE selo (
+    id BIGSERIAL NOT NULL,
+    nome VARCHAR(150) NOT NULL,
+    descricao TEXT NOT NULL,
+    tipo VARCHAR(100) NOT NULL
+);
+
+ALTER TABLE selo ADD CONSTRAINT selo_pk PRIMARY KEY (id);
 
 ```
 
@@ -199,6 +211,23 @@ ALTER TABLE conquista ADD CONSTRAINT conquista_pk PRIMARY KEY (id);
 ALTER TABLE conquista ADD CONSTRAINT fk_gestor FOREIGN KEY (gestor_id) REFERENCES usuario(id);
 ALTER TABLE conquista ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) REFERENCES usuario(id);
 ALTER TABLE conquista ADD CONSTRAINT fk_selo FOREIGN KEY (selo_id) REFERENCES selo(id); 
+
+```
+
+Inserindo dados na tabela `selo`:
+
+```sql
+INSERT INTO selo (nome, descricao, tipo) VALUES
+('Monitor Estelar', 'Recebido por monitores que ajudam outros colaboradores a pontuar bem em uma ou mais tarefas.', 'monitor'),
+('Gêmeos Sinérgicos', 'Trabalho em equipe! Recebido ao completar uma tarefa com auxilio de um monitor.', 'padrão'),
+('Tropa do Cafezinho', 'Para quem mantém a performance lá no alto, pontuando vezes 90% várias vezes. Café e eficiência, do jeitinho brasileiro!', 'padrão'),
+('Camelo Valente', 'Concedido àquele que carrega as responsabilidades com determinação e enfrenta longas jornadas sem desistir. Um símbolo de força e dedicação, sempre pronto para ir além!', 'padrão'),
+('Mapa do Tesouro', 'Esse selo celebra o colaborador que traça o caminho certo para alcançar as metas. Com estratégia e persistência, ele segue o mapa do tesouro e garante que a equipe alcance seu destino.', 'padrão'),
+('Voando Alto', 'Para quem conduz suas tarefas com maestria e precisão. Esse selo é reservado para aqueles que voam alto e alcançam resultados excepcionais!', 'padrão'),
+('Dança do Robô', 'Recebido por aqueles que solucionam problemas de maneira rápida e inovadora, como uma verdadeira IA. Esse colaborador é ágil e preciso, sempre encontrando as melhores soluções.', 'padrão'),
+('Espírito Selvagem', 'Conquistado por quem avança com coragem e tranquilidade, mesmo em terrenos difíceis. Um selo para os que encontram beleza e aprendizado nos desafios.', 'padrão'),
+('Calmaria Tropical', 'Concedido ao colaborador que mantém a calma e resolve problemas com serenidade, mesmo em meio às ondas de desafios. Um verdadeiro exemplo de tranquilidade.', 'padrão'),
+('Acampamento Revitalizante', 'Para aquele que desbrava projetos e, após grandes conquistas, aproveita uma merecida pausa. Um acampamento para recarregar as forças e preparar-se para as próximas aventuras!', 'padrão');
 
 ```
 
