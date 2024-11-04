@@ -189,8 +189,6 @@ ALTER TABLE tarefa ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) RE
 
 CREATE TABLE conquista (
     id BIGSERIAL NOT NULL,
-    nome VARCHAR(150) NOT NULL,
-    descricao TEXT NOT NULL,
     tipo VARCHAR(100) NOT NULL,
     gestor_id BIGINT NOT NULL,
     colaborador_id BIGINT NOT NULL,
