@@ -12,8 +12,7 @@ public class Conquista {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")
     private Long id;
-    private String nome, descricao, tipo;
-    private Long gestorId, colaboradorId;
+    private Long gestorId, colaboradorId, seloId;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataAtribuicao;
@@ -34,30 +33,6 @@ public class Conquista {
         this.dataAtribuicao = dataAtribuicao;
     }
 
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return this.descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getTipo() {
-        return this.tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     public Long getGestorId(){
         return this.gestorId;
     }
@@ -72,5 +47,13 @@ public class Conquista {
 
     public void setColaboradorId(Long colaboradorId) {
         this.colaboradorId = colaboradorId;
+    }
+
+    public Long getSeloId(){
+        return this.seloId;
+    }
+
+    public void setSeloId(Long seloId){
+        this.seloId = seloId;
     }
 }

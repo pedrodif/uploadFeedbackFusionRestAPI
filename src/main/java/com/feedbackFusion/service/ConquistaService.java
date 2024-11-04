@@ -16,12 +16,10 @@ public class ConquistaService {
     private ConquistaRepository repository;
 
     private void configurarConquista(Conquista conquista, ConquistaDTO conquistaDTO){
-        conquista.setTipo(conquistaDTO.getTipo());
-        conquista.setNome(conquistaDTO.getNome());
-        conquista.setDescricao(conquistaDTO.getDescricao());
         conquista.setGestorId(conquistaDTO.getGestorId());
         conquista.setColaboradorId(conquistaDTO.getColaboradorId());
         conquista.setDataAtribuicao(conquistaDTO.getDataAtribuicao());
+        conquista.setSeloId(conquistaDTO.getSeloId());
     }
 
     public ConquistaDTO create(ConquistaDTO conquistaDTO){
@@ -37,11 +35,9 @@ public class ConquistaService {
         ConquistaDTO conquistaConvertida = new ConquistaDTO();
         conquistaConvertida.setId(conquista.getId());
         conquistaConvertida.setDataAtribuicao(conquista.getDataAtribuicao());
-        conquistaConvertida.setNome(conquista.getNome());
-        conquistaConvertida.setDescricao(conquista.getDescricao());
         conquistaConvertida.setGestorId(conquista.getGestorId());
         conquistaConvertida.setColaboradorId(conquista.getColaboradorId());
-        conquistaConvertida.setTipo(conquista.getTipo());
+        conquistaConvertida.setSeloId(conquista.getSeloId());
         return conquistaConvertida;
     }
 

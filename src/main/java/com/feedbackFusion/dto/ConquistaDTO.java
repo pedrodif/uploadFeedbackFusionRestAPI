@@ -6,8 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDate;
 
 public class ConquistaDTO {
-    private String nome, descricao, tipo;
-    private Long id, gestorId, colaboradorId;
+    private Long id, gestorId, colaboradorId, seloId;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataAtribuicao;
@@ -18,30 +17,6 @@ public class ConquistaDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return this.descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getTipo() {
-        return this.tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public LocalDate getDataAtribuicao() {
@@ -66,5 +41,13 @@ public class ConquistaDTO {
 
     public void setColaboradorId(Long colaboradorId) {
         this.colaboradorId = colaboradorId;
+    }
+
+    public Long getSeloId(){
+        return this.seloId;
+    }
+
+    public void setSeloId(Long seloId){
+        this.seloId = seloId;
     }
 }
