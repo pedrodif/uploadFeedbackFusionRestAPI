@@ -162,6 +162,7 @@ ALTER TABLE feedback ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) 
 CREATE TABLE tarefa (
     id BIGSERIAL NOT NULL,
     pontuacao INT DEFAULT 0 NOT NULL,
+    pontuacao_obtida INT DEFAULT 0 NOT NULL, -- Novo campo adicionado
     gestor_id BIGINT NOT NULL,
     colaborador_id BIGINT NOT NULL,
     status_conclusao BOOLEAN DEFAULT FALSE NOT NULL,
@@ -178,6 +179,7 @@ CREATE TABLE tarefa (
 ALTER TABLE tarefa ADD CONSTRAINT tarefa_pk PRIMARY KEY (id);
 ALTER TABLE tarefa ADD CONSTRAINT fk_gestor FOREIGN KEY (gestor_id) REFERENCES usuario(id);
 ALTER TABLE tarefa ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) REFERENCES usuario(id);
+
 
 ```
 
