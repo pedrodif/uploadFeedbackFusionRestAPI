@@ -11,7 +11,7 @@ public class TarefaDTO {
     private String documentos, comentariosGestor, titulo, descricao;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dataCriacao, dataPrazo, dataEdicao, dataConclusao;
+    private LocalDate dataCriacao, dataPrazo, dataEdicao, dataConclusao, dataAvaliacao;
 
     public Long getId() {
         return id;
@@ -51,6 +51,14 @@ public class TarefaDTO {
 
     public void setDataConclusao(LocalDate dataConclusao) {
         this.dataConclusao = dataConclusao;
+    }
+
+    public LocalDate getDataAvaliacao() {
+        return this.dataAvaliacao;
+    }
+
+    public void setDataAvaliacao(LocalDate dataAvaliacao) {
+        this.dataAvaliacao = dataAvaliacao;
     }
 
     public boolean isStatusConclusao() {

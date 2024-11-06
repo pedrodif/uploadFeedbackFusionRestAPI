@@ -24,6 +24,7 @@ public class TarefaService {
         tarefa.setDataPrazo(tarefaDTO.getDataPrazo());
         tarefa.setDataConclusao(tarefaDTO.getDataConclusao());
         tarefa.setDataEdicao(tarefaDTO.getDataEdicao());
+        tarefa.setDataAvaliacao(tarefaDTO.getDataAvaliacao());
         tarefa.setPontuacao(tarefaDTO.getPontuacao());
         tarefa.setPontuacaoObtida(tarefaDTO.getPontuacaoObtida());
         tarefa.setDocumentos(tarefaDTO.getDocumentos());
@@ -54,7 +55,7 @@ public class TarefaService {
         tarefaDTO.setId(tarefa.getId());
         tarefaDTO.setDataCriacao(tarefa.getDataCriacao());
 
-        usuarioService.updatePontuacao(tarefaDTO.getId(), tarefaDTO.getPontuacaoObtida());
+        usuarioService.updatePontuacao(tarefaDTO.getColaboradorId(), tarefaDTO.getPontuacaoObtida());
         return tarefaDTO;
     }
 
@@ -67,6 +68,7 @@ public class TarefaService {
         tarefaConvertida.setDataPrazo(tarefa.getDataPrazo());
         tarefaConvertida.setDataConclusao(tarefa.getDataConclusao());
         tarefaConvertida.setDataEdicao(tarefa.getDataEdicao());
+        tarefaConvertida.setDataAvaliacao(tarefa.getDataAvaliacao());
         tarefaConvertida.setPontuacao(tarefa.getPontuacao());
         tarefaConvertida.setPontuacaoObtida(tarefa.getPontuacaoObtida());
         tarefaConvertida.setDocumentos(tarefa.getDocumentos());
