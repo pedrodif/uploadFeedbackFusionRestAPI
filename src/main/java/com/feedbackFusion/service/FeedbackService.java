@@ -2,6 +2,8 @@ package com.feedbackFusion.service;
 
 import com.feedbackFusion.model.Feedback;
 import com.feedbackFusion.dto.FeedbackDTO;
+import com.feedbackFusion.model.Usuario;
+import com.feedbackFusion.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 import jakarta.persistence.EntityNotFoundException;
 import com.feedbackFusion.repository.FeedbackRepository;
@@ -15,11 +17,13 @@ public class FeedbackService {
     @Autowired
     private FeedbackRepository repository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     private void configurarFeedback(Feedback feedback, FeedbackDTO feedbackDTO){
         feedback.setDataEdicao(feedbackDTO.getDataEdicao());
         feedback.setTitulo(feedbackDTO.getTitulo());
         feedback.setDescricao(feedbackDTO.getDescricao());
-        feedback.setGestorId(feedbackDTO.getGestorId());
         feedback.setColaboradorId(feedbackDTO.getColaboradorId());
     }
 
@@ -27,8 +31,14 @@ public class FeedbackService {
         Feedback feedback = new Feedback();
         configurarFeedback(feedback, feedbackDTO);
         feedback.setDataCriacao(feedbackDTO.getDataCriacao());
-        repository.save(feedback);
 
+        Usuario usuario = usuarioRepository.findById(feedbackDTO.getGestorId())
+                .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + feedbackDTO.getGestorId()));
+
+        feedback.setGestor(usuario);
+
+        repository.save(feedback);
+        feedbackDTO.setGestor(feedback.getGestor());
         feedbackDTO.setId(feedback.getId());
         return feedbackDTO;
     }
@@ -54,8 +64,9 @@ public class FeedbackService {
         feedbackConvertido.setDataEdicao(feedback.getDataEdicao());
         feedbackConvertido.setTitulo(feedback.getTitulo());
         feedbackConvertido.setDescricao(feedback.getDescricao());
-        feedbackConvertido.setGestorId(feedback.getGestorId());
         feedbackConvertido.setColaboradorId(feedback.getColaboradorId());
+        feedbackConvertido.setGestorId(feedback.getGestor().getId());
+        feedbackConvertido.setGestor(feedback.getGestor());
         return feedbackConvertido;
     }
 

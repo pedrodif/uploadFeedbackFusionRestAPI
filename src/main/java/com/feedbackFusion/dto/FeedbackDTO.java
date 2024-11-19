@@ -1,10 +1,12 @@
 package com.feedbackFusion.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.feedbackFusion.model.Usuario;
 
 import java.time.LocalDate;
 
 public class FeedbackDTO {
+    private Usuario gestor;
     private String titulo, descricao;
     private Long id, gestorId, colaboradorId;
 
@@ -57,6 +59,14 @@ public class FeedbackDTO {
 
     public void setGestorId(Long gestorId){
         this.gestorId = gestorId;
+    }
+
+    public Usuario getGestor() {
+        return this.gestor;
+    }
+
+    public void setGestor(Usuario gestor) {
+        this.gestor = gestor;
     }
 
     public Long getColaboradorId(){

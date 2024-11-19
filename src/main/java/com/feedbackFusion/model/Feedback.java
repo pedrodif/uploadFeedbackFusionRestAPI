@@ -12,11 +12,15 @@ public class Feedback {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")
     private Long id;
+    private Long colaboradorId;
     private String titulo, descricao;
-    private Long gestorId, colaboradorId;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataCriacao, dataEdicao;
+
+    @ManyToOne
+    @JoinColumn(name = "gestor_id", referencedColumnName = "id")
+    private Usuario gestor;
 
     public Long getId() {
         return this.id;
@@ -58,19 +62,19 @@ public class Feedback {
         this.descricao = descricao;
     }
 
-    public Long getGestorId(){
-        return this.gestorId;
-    }
-
-    public void setGestorId(Long gestorId){
-        this.gestorId = gestorId;
-    }
-
     public Long getColaboradorId(){
         return this.colaboradorId;
     }
 
     public void setColaboradorId(Long colaboradorId) {
         this.colaboradorId = colaboradorId;
+    }
+
+    public Usuario getGestor() {
+        return this.gestor;
+    }
+
+    public void setGestor(Usuario gestor) {
+        this.gestor = gestor;
     }
 }
