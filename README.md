@@ -230,6 +230,23 @@ INSERT INTO selo (nome, descricao, tipo) VALUES
 ('Acampamento Revitalizante', 'Para aquele que desbrava projetos e, após grandes conquistas, aproveita uma merecida pausa. Um acampamento para recarregar as forças e preparar-se para as próximas aventuras!', 'padrão');
 
 ```
+### Criação da Tabela `solicitacao_ajuda `
+
+```sql
+CREATE TABLE solicitacao_ajuda (
+    id BIGSERIAL NOT NULL,
+    monitor_id BIGINT NOT NULL,
+    colaborador_id BIGINT NOT NULL,
+    tarefa_id BIGINT NOT NULL,
+    data_solicitacao DATE NOT NULL
+);
+
+ALTER TABLE solicitacao_ajuda ADD CONSTRAINT solicitacao_ajuda_pk PRIMARY KEY (id);
+ALTER TABLE solicitacao_ajuda ADD CONSTRAINT fk_monitor FOREIGN KEY (monitor_id) REFERENCES usuario(id);
+ALTER TABLE solicitacao_ajuda ADD CONSTRAINT fk_colaborador FOREIGN KEY (colaborador_id) REFERENCES usuario(id);
+ALTER TABLE solicitacao_ajuda ADD CONSTRAINT fk_tarefa FOREIGN KEY (tarefa_id) REFERENCES tarefa(id);
+
+```
 
 - Executar o Script:
 
