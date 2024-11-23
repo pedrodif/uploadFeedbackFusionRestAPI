@@ -2,6 +2,7 @@ package com.feedbackFusion.dto;
 
 public class UsuarioDTO {
     private Long id;
+    private Long equipeId;
     private int pontuacaoTotal = 0;
     private boolean statusMonitor = false;
     private String email, senha, nome, empresa, departamento, cargo, avatar;
@@ -12,6 +13,14 @@ public class UsuarioDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getEquipeId() {
+        return this.equipeId;
+    }
+
+    public void setEquipeId(Long equipeId) {
+        this.equipeId = equipeId;
     }
 
     public String getSenha() {

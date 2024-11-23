@@ -1,6 +1,5 @@
 package com.feedbackFusion.dto;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;

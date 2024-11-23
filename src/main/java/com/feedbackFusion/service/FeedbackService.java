@@ -25,19 +25,20 @@ public class FeedbackService {
         feedback.setTitulo(feedbackDTO.getTitulo());
         feedback.setDescricao(feedbackDTO.getDescricao());
         feedback.setColaboradorId(feedbackDTO.getColaboradorId());
-    }
-
-    public FeedbackDTO create(FeedbackDTO feedbackDTO){
-        Feedback feedback = new Feedback();
-        configurarFeedback(feedback, feedbackDTO);
-        feedback.setDataCriacao(feedbackDTO.getDataCriacao());
 
         Usuario usuario = usuarioRepository.findById(feedbackDTO.getGestorId())
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + feedbackDTO.getGestorId()));
 
         feedback.setGestor(usuario);
+    }
 
+    public FeedbackDTO create(FeedbackDTO feedbackDTO){
+        Feedback feedback = new Feedback();
+
+        configurarFeedback(feedback, feedbackDTO);
+        feedback.setDataCriacao(feedbackDTO.getDataCriacao());
         repository.save(feedback);
+
         feedbackDTO.setGestor(feedback.getGestor());
         feedbackDTO.setId(feedback.getId());
         return feedbackDTO;
@@ -53,7 +54,6 @@ public class FeedbackService {
 
         feedbackDTO.setId(feedback.getId());
         feedbackDTO.setDataCriacao(feedback.getDataCriacao());
-
         return feedbackDTO;
     }
 

@@ -1,7 +1,9 @@
 package com.feedbackFusion.service;
 
 import com.feedbackFusion.dto.UsuarioDTO;
+import com.feedbackFusion.model.Equipe;
 import com.feedbackFusion.model.Usuario;
+import com.feedbackFusion.repository.EquipeRepository;
 import com.feedbackFusion.repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
 
+    @Autowired
+    private EquipeRepository equipeRepository;
+
     private void configurarUsuario(Usuario usuario, UsuarioDTO usuarioDTO) {
         usuario.setNome(usuarioDTO.getNome());
         usuario.setSenha(usuarioDTO.getSenha());
@@ -25,6 +30,12 @@ public class UsuarioService {
         usuario.setStatusMonitor(usuarioDTO.isStatusMonitor());
         usuario.setPontuacaoTotal(usuarioDTO.getPontuacaoTotal());
         usuario.setAvatar(usuarioDTO.getAvatar());
+
+        if (usuarioDTO.getEquipeId() != null) {
+            Equipe equipe = equipeRepository.findById(usuarioDTO.getEquipeId())
+                    .orElseThrow(() -> new EntityNotFoundException("Equipe não encontrada com ID: " + usuarioDTO.getEquipeId()));
+            usuario.setEquipe(equipe);
+        }
     }
 
     public UsuarioDTO create(UsuarioDTO UsuarioDTO){
@@ -40,6 +51,21 @@ public class UsuarioService {
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + usuarioId));
 
         usuario.setPontuacaoTotal(usuario.getPontuacaoTotal() + pontuacao);
+        repository.save(usuario);
+    }
+
+    public void updateEquipe(Long usuarioId, Long equipeId){
+        Usuario usuario = repository.findById(usuarioId)
+                .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + usuarioId));
+
+        if (equipeId == null) {
+            usuario.setEquipe(null);
+        } else {
+            Equipe equipe = equipeRepository.findById(equipeId)
+                    .orElseThrow(() -> new EntityNotFoundException("Equipe não encontrada com ID: " + equipeId));
+            usuario.setEquipe(equipe);
+        }
+
         repository.save(usuario);
     }
 
@@ -65,6 +91,11 @@ public class UsuarioService {
         usuarioConvertido.setCargo(usuario.getCargo());
         usuarioConvertido.setPontuacaoTotal(usuario.getPontuacaoTotal());
         usuarioConvertido.setAvatar(usuario.getAvatar());
+
+        if (usuario.getEquipe() != null) {
+            usuarioConvertido.setEquipeId(usuario.getEquipe().getId());
+        }
+
         return usuarioConvertido;
     }
 

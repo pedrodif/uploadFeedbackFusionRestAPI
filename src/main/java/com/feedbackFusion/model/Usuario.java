@@ -1,5 +1,6 @@
 package com.feedbackFusion.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,11 @@ public class Usuario {
     private int pontuacaoTotal = 0;
     private boolean statusMonitor = false;
     private String email, senha, nome, empresa, departamento, cargo, avatar;
+
+    @JsonBackReference
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "equipe_id")
+    private Equipe equipe;
 
     public Long getId() {
         return this.id;
@@ -91,5 +97,13 @@ public class Usuario {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public Equipe getEquipe() {
+        return this.equipe;
+    }
+
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
     }
 }
