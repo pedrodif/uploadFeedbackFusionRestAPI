@@ -130,12 +130,32 @@ CREATE TABLE usuario (
     empresa VARCHAR(100) NOT NULL,
     departamento VARCHAR(50) NOT NULL,
     cargo VARCHAR(50) NOT NULL,
-   avatar VARCHAR(100) NULL
+    equipe_id BIGINT NULL,
+    avatar VARCHAR(100) NULL
 );
 
 ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY (id);
+ALTER TABLE usuario ADD CONSTRAINT fk_equipe FOREIGN KEY (equipe_id) REFERENCES equipe(id);
 
 ```
+
+### Criação da Tabela `equipe`
+
+```sql
+CREATE TABLE equipe (
+    id BIGSERIAL NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    gestor_id BIGINT NOT NULL,
+    data_criacao DATE NOT NULL,
+    data_edicao DATE NULL
+);
+
+ALTER TABLE equipe ADD CONSTRAINT equipe_pk PRIMARY KEY (id);
+ALTER TABLE equipe ADD CONSTRAINT fk_gestor FOREIGN KEY (gestor_id) REFERENCES usuario(id);
+
+```
+
+
 ### Criação da Tabela `feedback`
 
 ```sql
