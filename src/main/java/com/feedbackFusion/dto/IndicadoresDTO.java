@@ -3,15 +3,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.feedbackFusion.model.Conquista;
+import com.feedbackFusion.model.Tarefa;
 import com.feedbackFusion.model.Usuario;
 import com.feedbackFusion.repository.ConquistaRepository;
+import com.feedbackFusion.repository.TarefaRepository;
 import com.feedbackFusion.service.*;
 public class IndicadoresDTO {
 
     private FeedbackService feedbackService;
     private EquipeService equipeService;
     private TarefaService tarefaService;
-    private ConquistaRepository repository;
+    private ConquistaRepository conquistaRepository;
+    private TarefaRepository tarefaRepository;
 
     public double mediaFeedbacks(){ 
          return (double) (feedbackService.getAll().size() / equipeService.getAllColaboradores().size());
@@ -40,7 +43,7 @@ public class IndicadoresDTO {
         List<Conquista> conquistas;
         int colaboradorComSelo = 0;
         for(Usuario colaborador : colaboradores){
-            conquistas = repository.findByColaboradorId(colaborador.getId());
+            conquistas = conquistaRepository.findByColaboradorId(colaborador.getId());
             if(conquistas.isEmpty()){}
             else{
                 colaboradorComSelo++;
@@ -57,6 +60,26 @@ public class IndicadoresDTO {
             }
         }
         return (double) colaboradoresMonitor/colaboradores.size();
+    }
+    public double MediaPontuacaoColaborador(Long idColaborador){
+        List<Tarefa> tarefas = tarefaRepository.findByColaboradorId(idColaborador);
+        double pontuacaoTotal = 0.0;
+        double pontuacaoObtida= 0.0;
+
+        for(Tarefa tarefa: tarefas){
+            pontuacaoTotal += tarefa.getPontuacao();
+            pontuacaoObtida += tarefa.getPontuacaoObtida();
+        }
+        return pontuacaoObtida/pontuacaoTotal;
+    }
+
+    public double MediaPontuacaoEquipe(Long idEquipe){
+        List<Usuario> colaboradores = equipeService.getAllColaboradores();
+        double sum = 0;
+        for(Usuario colaborador: colaboradores){
+            sum += MediaPontuacaoColaborador(colaborador.getId());
+        }
+        return (double) sum/colaboradores.size();
     }
 }
 
