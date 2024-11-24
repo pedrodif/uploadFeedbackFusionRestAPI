@@ -2,8 +2,8 @@ package com.feedbackFusion.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.feedbackFusion.model.Usuario;
 import com.feedbackFusion.service.*;
-
 public class IndicadoresDTO {
 
     public FeedbackService feedbackService;
@@ -13,14 +13,23 @@ public class IndicadoresDTO {
     public double mediaFeedbacks(){ 
          return (double) (feedbackService.getAll().size() / equipeService.getAllColaboradores().size());
     }
-    public double mediaTarefasNoPrazoColaborador(){
-        List<TarefaDTO> tarefas = tarefaService.getAll();
-        List<TarefaDTO> tarefasNoPrazo = new ArrayList<>();
-        for(TarefaDTO tarefa : tarefas){
-            if(tarefa.getDataConclusao().isBefore(tarefa.getDataPrazo())){
-                tarefasNoPrazo.add(tarefa);
+   public double mediaFeedbacksNoPrazoColaborador(Long idColaborador){
+    List<TarefaDTO> tarefasColaborador = tarefaService.getByColaboradorId(idColaborador);
+    List<TarefaDTO> tarefasConcluidasColaborador = new ArrayList<>();
+    for(TarefaDTO tarefa : tarefasColaborador){
+        if(tarefa.isStatusConclusao()){
+            tarefasConcluidasColaborador.add(tarefa);
             }
         }
-        return (double) (tarefasNoPrazo.size() / equipeService.getAllColaboradores().size());
+        return (double) (tarefasConcluidasColaborador.size() / tarefasColaborador.size());
+   }
+   
+   public double mediaFeedbacksNoPrazoEquipe(Long idEquipe){
+    List<Usuario> colaboradores = equipeService.getAllColaboradores();
+    double sum = 0;
+    for(Usuario colaborador: colaboradores){
+        sum += mediaFeedbacksNoPrazoColaborador(colaborador.getId());
+    }
+    return (double) sum/colaboradores.size();
     }
 }
