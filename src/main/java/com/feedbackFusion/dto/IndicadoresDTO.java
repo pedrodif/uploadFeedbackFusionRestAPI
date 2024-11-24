@@ -2,13 +2,16 @@ package com.feedbackFusion.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.feedbackFusion.model.Conquista;
 import com.feedbackFusion.model.Usuario;
+import com.feedbackFusion.repository.ConquistaRepository;
 import com.feedbackFusion.service.*;
 public class IndicadoresDTO {
 
-    public FeedbackService feedbackService;
-    public EquipeService equipeService;
-    public TarefaService tarefaService;
+    private FeedbackService feedbackService;
+    private EquipeService equipeService;
+    private TarefaService tarefaService;
+    private ConquistaRepository repository;
 
     public double mediaFeedbacks(){ 
          return (double) (feedbackService.getAll().size() / equipeService.getAllColaboradores().size());
@@ -23,7 +26,7 @@ public class IndicadoresDTO {
         }
         return (double) (tarefasConcluidasColaborador.size() / tarefasColaborador.size());
    }
-   
+
    public double mediaFeedbacksNoPrazoEquipe(Long idEquipe){
     List<Usuario> colaboradores = equipeService.getAllColaboradores();
     double sum = 0;
@@ -32,4 +35,28 @@ public class IndicadoresDTO {
     }
     return (double) sum/colaboradores.size();
     }
+    public double mediaColaboradoresSelo(Long idEquipe){
+        List<Usuario> colaboradores = equipeService.getAllColaboradores();
+        List<Conquista> conquistas;
+        int colaboradorComSelo = 0;
+        for(Usuario colaborador : colaboradores){
+            conquistas = repository.findByColaboradorId(colaborador.getId());
+            if(conquistas.isEmpty()){}
+            else{
+                colaboradorComSelo++;
+            }
+        }
+        return (double) colaboradorComSelo/colaboradores.size();
+    }
+    public double mediacolaboradoresMonitor(){
+        List<Usuario> colaboradores = equipeService.getAllColaboradores();
+        int colaboradoresMonitor = 0;
+        for(Usuario colaborador: colaboradores){
+            if(colaborador.isStatusMonitor()){
+                colaboradoresMonitor++;
+            }
+        }
+        return (double) colaboradoresMonitor/colaboradores.size();
+    }
 }
+
