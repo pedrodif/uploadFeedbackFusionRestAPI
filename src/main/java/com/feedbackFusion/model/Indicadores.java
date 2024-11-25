@@ -1,21 +1,39 @@
-package com.feedbackFusion.dto;
+package com.feedbackFusion.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.feedbackFusion.model.Conquista;
-import com.feedbackFusion.model.Tarefa;
-import com.feedbackFusion.model.Usuario;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.feedbackFusion.dto.TarefaDTO;
 import com.feedbackFusion.repository.ConquistaRepository;
 import com.feedbackFusion.repository.TarefaRepository;
-import com.feedbackFusion.service.*;
-public class IndicadoresDTO {
+import com.feedbackFusion.service.EquipeService;
+import com.feedbackFusion.service.FeedbackService;
+import com.feedbackFusion.service.TarefaService;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "indicadores")
+public class Indicadores {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
+    @JsonFormat(pattern = "yyyy-MM-dd")
 
     private FeedbackService feedbackService;
     private EquipeService equipeService;
     private TarefaService tarefaService;
     private ConquistaRepository conquistaRepository;
     private TarefaRepository tarefaRepository;
-
+    public FeedbackService getFeedbackService() {
+        return feedbackService;
+    }
     public void setFeedbackService(FeedbackService feedbackService) {
         this.feedbackService = feedbackService;
     }
@@ -110,4 +128,3 @@ public class IndicadoresDTO {
         return (double) sum/colaboradores.size();
     }
 }
-
