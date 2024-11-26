@@ -31,7 +31,7 @@ public class ConquistaService {
         return conquistaDTO;
     }
 
-    private ConquistaDTO converterConquista (Conquista conquista) {
+    private ConquistaDTO converterConquista(Conquista conquista) {
         ConquistaDTO conquistaConvertida = new ConquistaDTO();
         conquistaConvertida.setId(conquista.getId());
         conquistaConvertida.setDataAtribuicao(conquista.getDataAtribuicao());

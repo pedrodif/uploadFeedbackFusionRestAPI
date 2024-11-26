@@ -119,6 +119,13 @@ public class EquipeService {
         return equipeConvertida;
     }
 
+    public EquipeDTO getById(Long equipeId) {
+        Equipe equipe = equipeRepository.findById(equipeId).
+                orElseThrow(() -> new EntityNotFoundException("Equipe não encontrada com ID: " + equipeId));
+
+        return converterEquipe(equipe);
+    }
+
     public List<EquipeDTO> getByGestorId(Long gestorId) {
         List<Equipe> equipes = equipeRepository.findByGestorId(gestorId);
 
