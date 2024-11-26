@@ -107,6 +107,10 @@ public class IndicadoresService {
                 .mapToInt(TarefaDTO::getPontuacao)
                 .sum();
 
+        if (pontuacaoAtribuida == 0) {
+            return 0.0;
+        }
+
         double taxa = (double) pontuacaoObtida / pontuacaoAtribuida;
         return formatarComDuasCasasDecimais(taxa);
     }
@@ -125,6 +129,10 @@ public class IndicadoresService {
         int pontuacaoAtribuida = tarefasRecuperadas.stream()
                 .mapToInt(TarefaDTO::getPontuacao)
                 .sum();
+
+        if (pontuacaoAtribuida == 0) {
+            return 0.0;
+        }
 
         double taxa = (double) pontuacaoObtida / pontuacaoAtribuida;
         return formatarComDuasCasasDecimais(taxa);
