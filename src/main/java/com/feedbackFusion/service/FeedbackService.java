@@ -76,10 +76,6 @@ public class FeedbackService {
 
     public List<FeedbackDTO> getByColaboradorId(Long colaboradorId) {
         List<Feedback> feedbacks = repository.findByColaboradorId(colaboradorId);
-
-        if (feedbacks.isEmpty()) {
-            throw new EntityNotFoundException("Nenhum feedback encontrado para o colaborador ID: " + colaboradorId);
-        }
         return feedbacks.stream().map(this::converterFeedback).collect(Collectors.toList());
     }
 

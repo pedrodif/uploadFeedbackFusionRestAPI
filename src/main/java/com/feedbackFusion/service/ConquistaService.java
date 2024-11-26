@@ -50,11 +50,6 @@ public class ConquistaService {
 
     public List<ConquistaDTO> getByColaboradorId(Long colaboradorId) {
         List<Conquista> conquistas = repository.findByColaboradorId(colaboradorId);
-
-        if (conquistas.isEmpty()) {
-            throw new EntityNotFoundException("Nenhuma conquista encontrada para o colaborador ID: " + colaboradorId);
-        }
-
         return conquistas.stream()
                 .map(this::converterConquista)
                 .collect(Collectors.toList());

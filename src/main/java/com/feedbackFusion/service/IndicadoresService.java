@@ -3,12 +3,15 @@ package com.feedbackFusion.service;
 import com.feedbackFusion.dto.EquipeDTO;
 import com.feedbackFusion.dto.TarefaDTO;
 import com.feedbackFusion.model.Usuario;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.feedbackFusion.dto.EquipeIndicadoresDTO;
+import com.feedbackFusion.dto.ColaboradorIndicadoresDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
 @Service
 public class IndicadoresService {
@@ -25,8 +28,22 @@ public class IndicadoresService {
     private ConquistaService conquistaService;
 
     private double formatarComDuasCasasDecimais(double valor) {
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setDecimalSeparator('.');
+        DecimalFormat df = new DecimalFormat("#.##", symbols);
         return Double.parseDouble(df.format(valor));
+    }
+
+    public int numeroFeedbacksEquipe(Long equipeId){
+        EquipeDTO equipeRecuperada = equipeService.getById(equipeId);
+
+        if (equipeRecuperada == null || equipeRecuperada.getColaboradores().isEmpty()) {
+            return 0;
+        }
+
+        return equipeRecuperada.getColaboradores().stream()
+                .mapToInt(colaborador -> feedbackService.getByColaboradorId(colaborador.getId()).size())
+                .sum();
     }
 
     public double mediaFeedbacksEquipe(Long equipeId){
@@ -111,7 +128,7 @@ public class IndicadoresService {
             return 0.0;
         }
 
-        double taxa = (double) pontuacaoObtida / pontuacaoAtribuida;
+        double taxa = ((double) pontuacaoObtida / pontuacaoAtribuida) * 100;
         return formatarComDuasCasasDecimais(taxa);
     }
 
@@ -134,7 +151,7 @@ public class IndicadoresService {
             return 0.0;
         }
 
-        double taxa = (double) pontuacaoObtida / pontuacaoAtribuida;
+        double taxa = ((double) pontuacaoObtida / pontuacaoAtribuida) * 100;
         return formatarComDuasCasasDecimais(taxa);
     }
 
@@ -166,5 +183,25 @@ public class IndicadoresService {
 
         double taxa = ((double) totalConquistas / equipeRecuperada.getColaboradores().size()) * 100;
         return formatarComDuasCasasDecimais(taxa);
+    }
+
+    public ColaboradorIndicadoresDTO getByColaboradorId(Long colaboradorId){
+        ColaboradorIndicadoresDTO colaboradorIndicadores = new ColaboradorIndicadoresDTO();
+        colaboradorIndicadores.setColaboradorId(colaboradorId);
+        colaboradorIndicadores.setTaxaPontuacao(this.taxaPontuacaoColaborador(colaboradorId));
+        colaboradorIndicadores.setTaxaEntregasNoPrazo(this.taxaEntregasNoPrazoColaborador(colaboradorId));
+        return colaboradorIndicadores;
+    }
+
+    public EquipeIndicadoresDTO getByEquipeId(Long equipeId) {
+        EquipeIndicadoresDTO equipeIndicadores = new EquipeIndicadoresDTO();
+        equipeIndicadores.setEquipeId(equipeId);
+        equipeIndicadores.setMediaFeedbacks(this.mediaFeedbacksEquipe(equipeId));
+        equipeIndicadores.setNumeroFeedbacks(this.numeroFeedbacksEquipe(equipeId));
+        equipeIndicadores.setTaxaEntregasNoPrazo(this.taxaEntregasNoPrazoEquipe(equipeId));
+        equipeIndicadores.setTaxaPontuacao(this.taxaPontuacaoEquipe(equipeId));
+        equipeIndicadores.setTaxaMonitores(this.taxaMonitoresEquipe(equipeId));
+        equipeIndicadores.setTaxaColaboradoresSelo(this.taxaColaboradoresSelo(equipeId));
+        return equipeIndicadores;
     }
 }

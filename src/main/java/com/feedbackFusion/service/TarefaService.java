@@ -85,10 +85,6 @@ public class TarefaService {
 
     public List<TarefaDTO> getByColaboradorId(Long colaboradorId) {
         List<Tarefa> tarefas = repository.findByColaboradorId(colaboradorId);
-
-        if (tarefas.isEmpty()) {
-            throw new EntityNotFoundException("Nenhuma tarefa encontrada para o colaborador ID: " + colaboradorId);
-        }
         return tarefas.stream().map(this::converterTarefa).collect(Collectors.toList());
     }
 
