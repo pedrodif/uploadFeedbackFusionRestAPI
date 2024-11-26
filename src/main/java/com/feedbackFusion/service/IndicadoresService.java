@@ -123,7 +123,7 @@ public class IndicadoresService {
                 .sum();
 
         int pontuacaoAtribuida = tarefasRecuperadas.stream()
-                .mapToInt(TarefaDTO::getPontuacaoObtida)
+                .mapToInt(TarefaDTO::getPontuacao)
                 .sum();
 
         double taxa = (double) pontuacaoObtida / pontuacaoAtribuida;
