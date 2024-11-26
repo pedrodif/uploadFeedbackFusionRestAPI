@@ -83,7 +83,7 @@ public class IndicadoresService {
         return formatarComDuasCasasDecimais(taxa);
     }
 
-    public double mediaPontuacaoEquipe(Long equipeId){
+    public double taxaPontuacaoEquipe(Long equipeId){
         EquipeDTO equipeRecuperada = equipeService.getById(equipeId);
 
         if (equipeRecuperada == null || equipeRecuperada.getColaboradores().isEmpty()) {
@@ -103,11 +103,15 @@ public class IndicadoresService {
                 .mapToInt(TarefaDTO::getPontuacaoObtida)
                 .sum();
 
-        double media = (double) pontuacaoObtida / tarefasRecuperadas.size();
-        return formatarComDuasCasasDecimais(media);
+        int pontuacaoAtribuida = tarefasRecuperadas.stream()
+                .mapToInt(TarefaDTO::getPontuacao)
+                .sum();
+
+        double taxa = (double) pontuacaoObtida / pontuacaoAtribuida;
+        return formatarComDuasCasasDecimais(taxa);
     }
 
-    public double mediaPontuacaoColaborador(Long idColaborador){
+    public double taxaPontuacaoColaborador(Long idColaborador){
         List<TarefaDTO> tarefasRecuperadas = tarefaService.getByColaboradorId(idColaborador);
 
         if (tarefasRecuperadas.isEmpty()) {
@@ -118,8 +122,12 @@ public class IndicadoresService {
                 .mapToInt(TarefaDTO::getPontuacaoObtida)
                 .sum();
 
-        double media = (double) pontuacaoObtida / tarefasRecuperadas.size();
-        return formatarComDuasCasasDecimais(media);
+        int pontuacaoAtribuida = tarefasRecuperadas.stream()
+                .mapToInt(TarefaDTO::getPontuacaoObtida)
+                .sum();
+
+        double taxa = (double) pontuacaoObtida / pontuacaoAtribuida;
+        return formatarComDuasCasasDecimais(taxa);
     }
 
     public double taxaMonitoresEquipe(Long equipeId){
