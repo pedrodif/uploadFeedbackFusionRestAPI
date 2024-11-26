@@ -29,6 +29,12 @@ public class EquipeController {
         return ResponseEntity.ok(updatedEquipe);
     }
 
+    @GetMapping("/{equipeId}")
+    public ResponseEntity<EquipeDTO> getById(@PathVariable("equipeId") Long equipeId) {
+        EquipeDTO equipe = equipeService.getById(equipeId);
+        return ResponseEntity.ok(equipe);
+    }
+
     @GetMapping("/gestor/{gestorId}")
     public ResponseEntity<List<EquipeDTO>> getByGestorId(@PathVariable("gestorId") Long gestorId) {
         List<EquipeDTO> equipes = equipeService.getByGestorId(gestorId);
