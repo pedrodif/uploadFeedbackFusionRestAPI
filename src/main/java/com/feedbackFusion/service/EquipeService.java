@@ -150,6 +150,18 @@ public class EquipeService {
 
         return converterEquipe(equipeRecuperada);
     }
+    
+    public List<Usuario> getAllColaboradores() {
+        List<Equipe> equipes = equipeRepository.findAll();
+        List<Usuario> colaboradores = new ArrayList<>();
+
+        for (Equipe equipe : equipes) {
+            Hibernate.initialize(equipe.getColaboradores());
+            colaboradores.addAll(equipe.getColaboradores());
+        }
+
+        return colaboradores;
+    }
 
     public String delete(Long equipeId){
         Equipe equipe = equipeRepository.findById(equipeId)
