@@ -38,12 +38,12 @@ public class UsuarioService {
         }
     }
 
-    public UsuarioDTO create(UsuarioDTO UsuarioDTO){
+    public UsuarioDTO create(UsuarioDTO usuarioDTO){
         Usuario usuario = new Usuario();
-        configurarUsuario(usuario, UsuarioDTO);
+        configurarUsuario(usuario, usuarioDTO);
         repository.save(usuario);
-        UsuarioDTO.setId(usuario.getId());
-        return UsuarioDTO;
+        usuarioDTO.setId(usuario.getId());
+        return usuarioDTO;
     }
 
     public void updatePontuacao(Long usuarioId, int pontuacao) {
