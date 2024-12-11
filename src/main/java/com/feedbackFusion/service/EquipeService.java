@@ -49,7 +49,7 @@ public class EquipeService {
                     .orElseThrow(() -> new EntityNotFoundException("Colaborador não encontrado com ID: " + colaboradorId));
 
             if (colaborador.getEquipe() != null) {
-                throw new IllegalArgumentException("O colaborador: " + colaborador.getNome() + ",já faz parte da equipe: " + colaborador.getEquipe().getNome());
+                throw new IllegalArgumentException("O colaborador: " + colaborador.getNome() + ", já faz parte da equipe: " + colaborador.getEquipe().getNome());
             }
 
             equipe.addColaborador(colaborador);
