@@ -238,9 +238,9 @@ Inserindo dados na tabela `selo`:
 
 ```sql
 INSERT INTO selo (nome, descricao, tipo) VALUES
-('Monitor Estelar', 'Recebido por monitores que ajudam outros colaboradores a pontuar bem em uma ou mais tarefas.', 'monitor'),
+('Monitor Estelar', 'Este selo é concedido àqueles que ajudam outros colaboradores a alcançar grandes resultados em suas tarefas. Parabéns por apoiar sua equipe e se destacar como um verdadeiro mentor. Você é uma estrela!', 'monitor'),
 ('Gêmeos Sinérgicos', 'Trabalho em equipe! Recebido ao completar uma tarefa com auxilio de um monitor.', 'padrão'),
-('Tropa do Cafezinho', 'Para quem mantém a performance lá no alto, pontuando vezes 90% várias vezes. Café e eficiência, do jeitinho brasileiro!', 'padrão'),
+('Tropa do Cafezinho', 'Para quem mantém a performance lá no alto, pontuando 90% várias vezes. Café e eficiência, do jeitinho brasileiro!', 'padrão'),
 ('Camelo Valente', 'Concedido àquele que carrega as responsabilidades com determinação e enfrenta longas jornadas sem desistir. Um símbolo de força e dedicação, sempre pronto para ir além!', 'padrão'),
 ('Mapa do Tesouro', 'Esse selo celebra o colaborador que traça o caminho certo para alcançar as metas. Com estratégia e persistência, ele segue o mapa do tesouro e garante que a equipe alcance seu destino.', 'padrão'),
 ('Voando Alto', 'Para quem conduz suas tarefas com maestria e precisão. Esse selo é reservado para aqueles que voam alto e alcançam resultados excepcionais!', 'padrão'),
@@ -248,6 +248,7 @@ INSERT INTO selo (nome, descricao, tipo) VALUES
 ('Espírito Selvagem', 'Conquistado por quem avança com coragem e tranquilidade, mesmo em terrenos difíceis. Um selo para os que encontram beleza e aprendizado nos desafios.', 'padrão'),
 ('Calmaria Tropical', 'Concedido ao colaborador que mantém a calma e resolve problemas com serenidade, mesmo em meio às ondas de desafios. Um verdadeiro exemplo de tranquilidade.', 'padrão'),
 ('Acampamento Revitalizante', 'Para aquele que desbrava projetos e, após grandes conquistas, aproveita uma merecida pausa. Um acampamento para recarregar as forças e preparar-se para as próximas aventuras!', 'padrão');
+('Colaborador Sideral', 'Aquele que navega pelo vasto universo dos desafios, sempre em busca de novas estrelas para conquistar. Sua jornada é repleta de descobertas, e cada conquista é uma galáxia de aprendizados que o prepara para explorar ainda mais além.', 'padrão');
 
 ```
 ### Criação da Tabela `solicitacao_ajuda `
