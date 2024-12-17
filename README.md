@@ -11,10 +11,11 @@ Este projeto é uma API REST desenvolvida em Java com Spring Boot. Este README f
    - [Instalação do Docker](#instalação-do-docker)
    - [Instalação do Docker Compose](#instalação-do-docker-compose)
 2. [Criando o Container](#criando-o-container)
-3. [Banco de Dados](#banco-de-dados)
+3. [Modelo Relacional](#modelo-relacional)
+4. [Banco de Dados](#banco-de-dados)
    - [Criação da Tabela `usuario`](#criação-da-tabela-usuario)
-4. [Executando o Projeto](#executando-o-projeto)
-5. [Testando a API com Postman](#testando-a-api-com-postman)
+5. [Executando o Projeto](#executando-o-projeto)
+6. [Testando a API com Postman](#testando-a-api-com-postman)
 
 
 ## Instalação
@@ -82,6 +83,13 @@ Para criar e iniciar os containers Docker, navegue até o diretório onde está 
 ```bash
 docker-compose up -d
 ```
+## Modelo Relacional
+
+O modelo relacional utilizado no projeto **FeedbackFusion** organiza os dados em tabelas interligadas através de chaves primárias e estrangeiras, garantindo a integridade e a consistência das informações. A estrutura foi planejada para permitir uma gestão eficiente de feedbacks, tarefas, conquistas e usuários, além de proporcionar um monitoramento contínuo do desempenho dos colaboradores.
+
+A imagem a seguir ilustra o diagrama do modelo relacional implementado no projeto:
+
+![Modelo Relacional](modeloRelacional.jpg "Modelo Relacional.")
 
 ## Banco de Dados
 
